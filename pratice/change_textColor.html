@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 연습</title>
+</head>
+
+<body>
+    <h1 id ="id1" style ="text-align: center; color: aquamarine; font-size: 100px;">Hello, World!</h1>
+    <p id="text" style="color: black text; text-align: center;">상단의 문장을 클릭해보세요</p>
+</body>
+
+<script language="javascript"> 
+    let id1 = document.querySelector("#id1");
+    let origin_color = id1.style.color;
+    let click_cnt = 0; //클릭횟수를 저장할 변수
+
+    // 짝수 번일 경우 원래의 색으로
+    // 홀수 번일 경우 색 변경 
+    id1.onclick = function() {
+        click_cnt ++;
+        if (click_cnt%2 ==0) {
+            id1.style.color = origin_color;
+        } else {
+            id1.style.color = "yellow";
+        }
+    };
+
+</script>
+</html>
+

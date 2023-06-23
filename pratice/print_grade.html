@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예제 연습</title>
+</head>
+<body>
+    <script lang="javascript" >
+        let score =  window.prompt("백분위를 입력하세요:(0-100점)");
+
+        score = parseInt(score);
+
+        if (score >=80) {
+            document.write(score + "%는 A+ 학점입니다.");
+        }else if (score>=70) {
+            document.write(score + "%는 A0 학점입니다.");
+        }else if (score>=60) {
+            document.write(score+"%는 B+ 학점입니다." );
+        }else if (score>=55) {
+            document.write(score+"%는 B- 학점입니다.");
+        }else if (score>=40) {
+            document.write(score+"%는 C+ 학점입니다.");
+        }else if(score>=30) {
+            document.write(score+"%는 C- 학점입니다.");
+        } else if (score>=20) {
+            document.write(score+"%는 D+ 학점입니다.");
+        } else if (score>=15) {
+            document.write(score+"%는 D- 학점입니다.");
+        } else {
+            document.write(score +"%는 F 학점입니다. 재수강하세요");
+        }
+    </script>
+</body>
+</html>
