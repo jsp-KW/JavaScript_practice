@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RANDOM NUMBER</title>
+
+    <style>
+        /*
+            부모 요소를 flex 컨테이너에 등록
+            자식 요소들을 가로와 세로축을 따라 가운데로 정렬
+            가로
+            세로
+        */
+
+        .btn {
+            display:flex; 
+            justify-content:center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <span style = "justify-content: center; display: flex; align-items: center;">
+        <h1>랜덤 숫자 맞추기</h1>
+    </span>
+     <div class="btn">
+        <button onclick ="findNum()" style ="font-size: large;">게임 시작</button>
+    </div>
+    <script lang="javascript">
+
+    function findNum() {
+        
+        let low =0,high=0,answer=0;
+
+        while (true) {
+            low =0;
+            high =50;
+            let count =0;
+            answer = Math.floor(Math.random()*50);
+            alert("랜덤수 생성완료!");
+
+
+            while (true) {
+                let user_num = 0;
+                alert(low+ "부터 ~ " + high +"까지 수 사이에 있습니다.");
+                count ++;
+                alert("현재까지 시도 횟수: "+ count + "번");
+
+                user_num = prompt("숫자를 입력: ");
+                user_num= parseInt(user_num);
+
+                if (user_num>high|| user_num<low) {
+                    alert("입력한 값이 범위에 있지 않습니다.");
+                }else {
+                    if (user_num=== answer){
+                        alert("정답!!!!!");
+                        break;
+                    }else if (user_num >answer) {
+                        alert("입력한 숫자보다 정답이 더 작습니다.");
+                        high = user_num;
+                    }else {
+                        alert("입력한 숫자보다  정답이 더 큽니다.");
+                        low = user_num;
+                    }
+                }
+            }
+
+            alert("정답을 맞추기까지 총 " + count + "번 도전하셨습니다.");
+
+            let nextGame = confirm ("게임을 새로 계속 하실건가요?");
+
+            if (nextGame === false) {
+                break;
+            }
+
+        }
+
+    }
+    </script>
+    
+</body>
+</html>
