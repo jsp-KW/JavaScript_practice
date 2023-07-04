@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer in javascript</title>
+
+    <style>
+        #timer {
+            font-size: 100px;
+            text-align: center;
+            color: rgb(238, 214, 255);
+            border: 4px solid rgb(210, 240, 210);
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1 style="text-align: center; border: 4px solid rgb(210, 240, 210);">Timer</h1>
+    <div id = "timer">00:00:00</div>
+
+    <script  lang="javascript">
+
+        var minute =prompt("측정할 시간을 입력해주세요 (분 단위 입력)");
+
+        var seconds = 0;
+
+        var timerElement = document.getElementById("timer");
+
+        function countTime() {
+            /*
+                String().padStart(2,"0") 입력된 숫자를 두 자리의 숫자로 표시한다,
+                5가 입력될 경우 05 , 10이 입력될 경우 그대로 10이 입력된다.
+            */
+
+            var min_display = String(minute).padStart(2,"0");
+            var sec_display = String(seconds).padStart(2,"0");
+
+            timerElement.textContent = min_display +":" +sec_display;
+            seconds--;
+            
+            //분을 차감해줘야하므로 60초가 지나면
+            if (seconds ===-1) {
+                minute--;
+                seconds= 59;
+            }
+
+            if (minute===0 && seconds ===-1) {
+                clearInterval(timerInterval);
+                finish();
+            }
+
+        }
+
+        var timerInterval = setInterval(countTime, 1000); // 1초에 한번씩 countTime함수 실행
+
+    
+        function finish(){
+                alert("타이머 종료");
+            } 
+            
+        </script>
+</body>
+</html>
