@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback function</title>
+</head>
+<body>
+
+    <h1> Callback Function</h1>
+    <button id = "button" >클릭</button>
+
+    <script lang="javascript">
+        //callback 함수 call 정의
+        
+        function call () {
+            alert("버튼을 클릭하셨습니다.");
+            console.log("버튼 클릭");
+        }
+
+
+        var btn = document.getElementById("button");
+        btn.addEventListener("click", call); // 이벤트 핸들링에 쓰여진 콜백함수.
+        
+    </script>
+    
+</body>
+</html>
