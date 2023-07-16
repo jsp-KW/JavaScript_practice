@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script lang = "javascript">
+
+        class Block {
+            constructor(header, body) {
+                this.header = header;
+                this.body = body;
+                this.nextBlock = null;
+            }
+        }
+
+        class BlockHeader {
+            constructor(version, index, previousBlockHash, merkleRoot, timestamp, difficulty, nonce) {
+                this.version = version;
+                this.index = index;
+                this.previousBlockHash = previousBlockHash;
+                this.merkleRoot = merkleRoot;
+                this.timestamp = timestamp;
+                this.difficulty = difficulty;
+                this.nonce = nonce;
+                this.hash = this.calculateHash();
+            }
+
+            calculateHash() {
+                // 블록 헤더의 해시 값을 계산하는 로직을 구현하세요.
+                // 예시로 간단하게 문자열을 합치고 해시값을 리턴하도록 구현합니다.
+                return this.version + this.index + this.previousBlockHash + this.merkleRoot + this.timestamp + this.difficulty + this.nonce;
+            }
+        }
+
+        class Blockchain {
+            constructor() {
+                this.chain = [this.createGenesisBlock()];
+            }
+        
+            createGenesisBlock() {
+                const header = new BlockHeader(
+                    '1.0',
+                    0,
+                    '',
+                    'genesisMerkleRoot',
+                    '2023-07-16 00:00:00',
+                    '100000',
+                    '0'
+                );
+                return new Block(header, 'genesisBlockBody');
+            }
+        
+            addBlock(body) {
+                const previousBlock = this.chain[this.chain.length - 1];
+                const newIndex = previousBlock.header.index + 1;
+                const newHeader = new BlockHeader(
+                    '1.0',
+                    newIndex,
+                    previousBlock.header.hash,
+                    'newMerkleRoot',
+                    new Date().toLocaleString(),
+                    '100000',
+                    '0'
+                );
+                const newBlock = new Block(newHeader, body);
+                this.chain.push(newBlock);
+            }
+        
+            printBlockchain() {
+                this.chain.forEach((block) => {
+                    console.log(block);
+                });
+            }
+        }
+        
+        const blockchain = new Blockchain();
+        
+        blockchain.addBlock('block1');
+        blockchain.addBlock('block2');
+        
+        blockchain.printBlockchain();
+    </script>
+</body>
+</html>
